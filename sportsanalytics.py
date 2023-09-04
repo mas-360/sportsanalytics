@@ -12,7 +12,7 @@ import cv2
 video_path = 'path_to_your_video.mp4'
 cap = cv2.VideoCapture(video_path)
 
-# Initialize object tracker
+
 tracker = cv2.TrackerCSRT_create()
 
 # Initialize player statistics
@@ -24,9 +24,9 @@ while True:
     if not ret:
         break
     
-    # Here you would implement player detection using object detection models
+    # Choose correct player detection model between: YOLO, Faster R-CNN, or Mask R-CNN
     
-    # Assuming you have detected players, loop through each detected player
+    # Model has detected players, loop through each detected player
     for player_bbox in detected_players:
         player_id = player_bbox['id']  # An identifier for the player
         
@@ -46,7 +46,7 @@ while True:
             # Update player statistics
             player_stats[player_id]['frames_played'] += 1
             # Calculate player movement distance and update the 'distance_covered' field
-            # You would need to implement distance calculation based on player's previous and current positions
+            # Need to implement distance calculation based on player's previous and current positions
         
         # Draw player bbox on the frame
         x, y, w, h = [int(coord) for coord in bbox]
